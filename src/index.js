@@ -76,9 +76,7 @@ Evergage.init({
             Evergage.sendEvent({
               action: "Customer Id entered",
               user: {
-                attributes: {
-                  customerId: customer,
-                },
+                customerId: customer,
               },
             });
           }
