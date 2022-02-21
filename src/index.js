@@ -50,7 +50,9 @@
 // The following code sample depicts examples of listeners configured in the global config and product_detail page type.
 
 Evergage.init({
-  cookieDomain: "https://trusting-euler-f5ef8a.netlify.app/",
+  account: "axxonconsultingsa",
+  dataset: "testmv",
+  cookiedomain: "https://trusting-euler-f5ef8a.netlify.app/",
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
   const config = {
@@ -157,27 +159,25 @@ Evergage.init({
     //       },
     //       { name: "product_detail_popup" },
     //     ],
-    //     listeners: [
-    //       // added in this step
-    //       Evergage.listener("click", ".add-to-cart", () => {
-    //         const lineItem = Evergage.util.buildLineItemFromPageState(
-    //           "select[id*=quantity]"
-    //         );
-    //         lineItem.sku = {
-    //           _id: Evergage.cashDom(".product-detail[data-pid]").attr(
-    //             "data-pid"
-    //           ),
-    //         };
-    //         Evergage.sendEvent({
-    //           itemAction: Evergage.ItemAction.AddToCart,
-    //           cart: {
-    //             singleLine: {
-    //               Product: lineItem,
-    //             },
-    //           },
-    //         });
-    //       }),
-    //     ],
+    listeners: [
+      // added in this step
+      Evergage.listener("click", "#button", () => {
+        const lineItem = Evergage.util.buildLineItemFromPageState(
+          "select[id*=quantity]"
+        );
+        lineItem.sku = {
+          _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
+        };
+        Evergage.sendEvent({
+          itemAction: Evergage.ItemAction.AddToCart,
+          cart: {
+            singleLine: {
+              Product: lineItem,
+            },
+          },
+        });
+      }),
+    ],
     //   },
     //   {
     //     name: "category",
