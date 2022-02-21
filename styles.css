@@ -1,0 +1,16 @@
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+#button {
+    width: 250px;
+}
+
+#hover {
+    margin-top: 20px;
+}
+
+#hover img {
+    width: 250px;
+}
