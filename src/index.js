@@ -56,7 +56,26 @@ Evergage.init({
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
   const config = {
-    global: {},
+    global: {
+      listeners: [
+        Evergage.listener("submit", ".button", () => {
+          const customer = Evergage.cashDom(".input").val();
+          console.log(customer);
+          if (customer) {
+            Evergage.sendEvent({
+              action: "First test",
+              user: {
+                attibutes: {
+                  emailAddress: "Email test",
+                },
+                id: "testid",
+                customerId: customer,
+              },
+            });
+          }
+        }),
+      ],
+    },
     pageTypeDefault: {
       name: "default",
     },
@@ -152,21 +171,7 @@ Evergage.init({
     //   },
     //   { name: "product_detail_popup" },
     // ],
-    listeners: [
-      Evergage.listener("click", ".button", () => {
-        const customer = Evergage.cashDom(".input").val();
-        console.log(customer);
-        if (customer) {
-          Evergage.sendEvent({
-            action: "Customer Id entered",
-            user: {
-              id: "testid",
-              customerId: customer,
-            },
-          });
-        }
-      }),
-    ],
+
     // listeners: [
     //   // added in this step
     //   Evergage.listener("click", "#button", () => {
