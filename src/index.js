@@ -153,8 +153,8 @@ Evergage.init({
     //   { name: "product_detail_popup" },
     // ],
     listeners: [
-      Evergage.listener("click", "#button", () => {
-        const customer = Evergage.cashDom("#input").val();
+      Evergage.listener("click", ".button", () => {
+        const customer = Evergage.cashDom(".input").val();
         console.log(customer);
         if (customer) {
           Evergage.sendEvent({
@@ -170,12 +170,12 @@ Evergage.init({
     // listeners: [
     //   // added in this step
     //   Evergage.listener("click", "#button", () => {
-    //     // const lineItem = Evergage.util.buildLineItemFromPageState(
-    //     //   "select[id*=quantity]"
-    //     // );
-    //     // lineItem.sku = {
-    //     //   _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
-    //     // };
+    //     const lineItem = Evergage.util.buildLineItemFromPageState(
+    //       "select[id*=quantity]"
+    //     );
+    //     lineItem.sku = {
+    //       _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
+    //     };
     //     Evergage.sendEvent({
     //       itemAction: Evergage.ItemAction.AddToCart,
     //       cart: {
