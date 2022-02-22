@@ -56,118 +56,117 @@ Evergage.init({
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
   const config = {
-    global: {
-      pageTypes: [
-        {
-          name: "home",
-          action: "Homepage",
-          isMatch: () => {
-            return window.location.pathname === "/";
-          },
-        },
-      ],
-      listeners: [
-        Evergage.listener("click", "#button", () => {
-          const customer = Evergage.cashDom("#input").val();
-          console.log(customer);
-          if (customer) {
-            Evergage.sendEvent({
-              action: "Customer Id entered",
-              user: {
-                id: "testid",
-                customerId: customer,
-              },
-            });
-          }
-        }),
-      ],
+    global: {},
+    pageTypeDefault: {
+      name: "default",
     },
-    // pageTypeDefault: {
-    //   name: "default",
-    // },
+    pageTypes: [
+      {
+        name: "home",
+        action: "Homepage",
+        isMatch: () => {
+          return window.location.pathname === "/";
+        },
+      },
+    ],
     // pageTypes: [
-    //   {
-    //     name: "product_detail",
-    //     isMatch: () => {
-    //       return (
-    //         Evergage.cashDom("div.page[data-action='Product-Show']").length > 0
-    //       );
-    //     },
-    //     catalog: {
-    //       // added in this step
-    //       Product: {
-    //         _id: () => {
-    //           const products = getProductsFromDataLayer() || [];
-    //           if (products.length > 0) {
-    //             return products[0].id;
-    //           } else {
-    //             return Evergage.cashDom(".product-detail[data-pid]").attr(
-    //               "data-pid"
-    //             );
+    // {
+    //   name: "product_detail",
+    //   isMatch: () => {
+    //     return (
+    //       Evergage.cashDom("div.page[data-action='Product-Show']").length > 0
+    //     );
+    //   },
+    //   catalog: {
+    //     // added in this step
+    //     Product: {
+    //       _id: () => {
+    //         const products = getProductsFromDataLayer() || [];
+    //         if (products.length > 0) {
+    //           return products[0].id;
+    //         } else {
+    //           return Evergage.cashDom(".product-detail[data-pid]").attr(
+    //             "data-pid"
+    //           );
+    //         }
+    //       },
+    //       name: Evergage.resolvers.fromJsonLd("name"),
+    //       url: Evergage.resolvers.fromHref(),
+    //       imageUrl: Evergage.resolvers.fromSelectorAttribute(
+    //         ".product-carousel .carousel-item[data-slick-index='0'] img",
+    //         "src"
+    //       ),
+    //       inventoryCount: 1,
+    //       price: Evergage.resolvers.fromSelector(".prices .price .value"),
+    //       categories: Evergage.resolvers.buildCategoryId(
+    //         ".container .product-breadcrumb .breadcrumb a",
+    //         null,
+    //         null,
+    //         (categoryId) => [categoryId.toUpperCase()]
+    //       ), // added in this step
+    //       dimensions: {
+    //         // added in this step
+    //         Gender: () => {
+    //           if (
+    //             Evergage.cashDom(".product-breadcrumb .breadcrumb a")
+    //               .first()
+    //               .text()
+    //               .toLowerCase() === "women" ||
+    //             Evergage.cashDom("h1.product-name").text().indexOf("Women") >=
+    //               0
+    //           ) {
+    //             return ["WOMEN"];
+    //           } else if (
+    //             Evergage.cashDom(".product-breadcrumb .breadcrumb a")
+    //               .first()
+    //               .text()
+    //               .toLowerCase() === "men" ||
+    //             Evergage.cashDom("h1.product-name").text().indexOf("Men") >= 0
+    //           ) {
+    //             return ["MEN"];
     //           }
     //         },
-    //         name: Evergage.resolvers.fromJsonLd("name"),
-    //         url: Evergage.resolvers.fromHref(),
-    //         imageUrl: Evergage.resolvers.fromSelectorAttribute(
-    //           ".product-carousel .carousel-item[data-slick-index='0'] img",
-    //           "src"
+    //         Color: Evergage.resolvers.fromSelectorAttributeMultiple(
+    //           ".color-value",
+    //           "data-attr-value"
     //         ),
-    //         inventoryCount: 1,
-    //         price: Evergage.resolvers.fromSelector(".prices .price .value"),
-    //         categories: Evergage.resolvers.buildCategoryId(
-    //           ".container .product-breadcrumb .breadcrumb a",
-    //           null,
-    //           null,
-    //           (categoryId) => [categoryId.toUpperCase()]
-    //         ), // added in this step
-    //         dimensions: {
-    //           // added in this step
-    //           Gender: () => {
-    //             if (
-    //               Evergage.cashDom(".product-breadcrumb .breadcrumb a")
-    //                 .first()
-    //                 .text()
-    //                 .toLowerCase() === "women" ||
-    //               Evergage.cashDom("h1.product-name").text().indexOf("Women") >=
-    //                 0
-    //             ) {
-    //               return ["WOMEN"];
-    //             } else if (
-    //               Evergage.cashDom(".product-breadcrumb .breadcrumb a")
-    //                 .first()
-    //                 .text()
-    //                 .toLowerCase() === "men" ||
-    //               Evergage.cashDom("h1.product-name").text().indexOf("Men") >= 0
-    //             ) {
-    //               return ["MEN"];
-    //             }
-    //           },
-    //           Color: Evergage.resolvers.fromSelectorAttributeMultiple(
-    //             ".color-value",
-    //             "data-attr-value"
-    //           ),
-    //           Feature: Evergage.resolvers.fromSelectorMultiple(
-    //             ".features .feature",
-    //             (features) => {
-    //               return features.map((feature) => {
-    //                 return feature.trim();
-    //               });
-    //             }
-    //           ),
-    //         },
+    //         Feature: Evergage.resolvers.fromSelectorMultiple(
+    //           ".features .feature",
+    //           (features) => {
+    //             return features.map((feature) => {
+    //               return feature.trim();
+    //             });
+    //           }
+    //         ),
     //       },
     //     },
-    //     contentZones: [
-    //       {
-    //         name: "product_detail_recs_row_1",
-    //         selector: ".row.recommendations div[id*='cq']:nth-of-type(1)",
-    //       },
-    //       {
-    //         name: "product_detail_recs_row_2",
-    //         selector: ".row.recommendations div[id*='cq']:nth-of-type(2)",
-    //       },
-    //       { name: "product_detail_popup" },
-    //     ],
+    //   },
+    // contentZones: [
+    //   {
+    //     name: "product_detail_recs_row_1",
+    //     selector: ".row.recommendations div[id*='cq']:nth-of-type(1)",
+    //   },
+    //   {
+    //     name: "product_detail_recs_row_2",
+    //     selector: ".row.recommendations div[id*='cq']:nth-of-type(2)",
+    //   },
+    //   { name: "product_detail_popup" },
+    // ],
+    listeners: [
+      Evergage.listener("click", "#button", () => {
+        const customer = Evergage.cashDom("#input").val();
+        console.log(customer);
+        if (customer) {
+          Evergage.sendEvent({
+            action: "Customer Id entered",
+            user: {
+              id: "testid",
+              customerId: customer,
+            },
+          });
+        }
+      }),
+    ],
     // listeners: [
     //   // added in this step
     //   Evergage.listener("click", "#button", () => {
