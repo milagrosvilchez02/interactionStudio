@@ -57,9 +57,6 @@ Evergage.init({
 }).then(() => {
   const config = {
     global: {
-      pageTypeDefault: {
-        name: "default",
-      },
       pageTypes: [
         {
           name: "home",
