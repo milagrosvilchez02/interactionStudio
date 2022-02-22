@@ -72,6 +72,7 @@ Evergage.init({
       listeners: [
         Evergage.listener("click", "#button", () => {
           const customer = Evergage.cashDom("#input").val();
+          console.log(customer);
           if (customer) {
             Evergage.sendEvent({
               action: "Customer Id entered",
