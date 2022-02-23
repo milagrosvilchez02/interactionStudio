@@ -29,7 +29,7 @@ Evergage.init({
               user: {
                 emailAddress: "EmailTest",
                 customerId: customer,
-                id: "testid",
+                id: "testid2",
               },
             });
           }
@@ -199,29 +199,6 @@ Evergage.init({
    * URL of the webpage changes, because Experience Cloud works as
    * a Single Page Application
    */
-
-  let currentUrl = window.location.href;
-  let isSitemapInitialized = false;
-
-  document.addEventListener("lwc_onuserdataready", (e) => {
-    if (isSitemapInitialized) return;
-
-    isSitemapInitialized = true;
-
-    interactionStudioExperienceCloudHelpers.catchBuilderContext();
-
-    interactionStudioExperienceCloudHelpers.userData =
-      e && e.detail && e.detail.userData;
-
-    Evergage.initSitemap(config);
-
-    setInterval(() => {
-      if (currentUrl !== window.location.href) {
-        currentUrl = window.location.href;
-        Evergage.reinit();
-      }
-    }, 1000);
-  });
 
   // This is a helper function created to help complete these labs.
   // const getProductsFromDataLayer = () => {
