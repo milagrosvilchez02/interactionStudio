@@ -17,7 +17,6 @@ Evergage.init({
           event.user.attributes.companyName =
             userData?.fields?.CompanyName?.value;
         }
-
         return event;
       },
       listeners: [
@@ -28,10 +27,8 @@ Evergage.init({
             Evergage.sendEvent({
               action: "First test",
               user: {
-                attributes: {
-                  emailAddress: "EmailTest",
-                  customerId: customer,
-                },
+                emailAddress: "EmailTest",
+                customerId: customer,
                 id: "testid",
               },
             });
