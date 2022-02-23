@@ -6,6 +6,20 @@ Evergage.init({
 }).then(() => {
   const config = {
     global: {
+      onActionEvent: (event) => {
+        var userData = interactionStudioExperienceCloudHelpers.userData;
+        if (userData) {
+          console.log(event);
+          event.user = event.user || {};
+          event.user.attributes = event.user.attributes || {};
+          event.user.attributes.experienceCloudUserId = userData?.id;
+          event.user.attributes.emailAddress = userData?.fields?.Email?.value;
+          event.user.attributes.companyName =
+            userData?.fields?.CompanyName?.value;
+        }
+
+        return event;
+      },
       listeners: [
         Evergage.listener("click", ".button", () => {
           const customer = Evergage.cashDom(".input").val();
