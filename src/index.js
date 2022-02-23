@@ -1,54 +1,3 @@
-// const button = document.getElementById("button");
-
-// const url = "https://axxonconsultingsa.us-5.evergage.com/api2/event/testmv";
-
-// const rawdata = { action: "hello world", user: { id: "testuser" } };
-
-// const handlePostData = async () => {
-//   fetch(url, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(rawdata),
-//   }).then((res) => {});
-// };
-
-// button.addEventListener("click", handlePostData);
-
-// Evergage.init({
-//   // Initializes the Interaction Studio Web SDK
-//   account: "axxonconsultingsa",
-//   dataset: "testmv",
-//   cookiedomain: "https://trusting-euler-f5ef8a.netlify.app/",
-// }).then(() => {
-//   const sitemapConfig = {
-//     // Sitemap configuration object
-//     global: {
-//       listeners: [
-//         Evergage.listener("click", "#button", () => {
-//           const lineItem = Evergage.util.buildLineItemFromPageState(
-//             "select[id*=quantity]"
-//           );
-//           lineItem.sku = {
-//             _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
-//           };
-//           Evergage.sendEvent({
-//             itemAction: Evergage.ItemAction.AddToCart,
-//             cart: {
-//               singleLine: {
-//                 Product: lineItem,
-//               },
-//             },
-//           });
-//         }),
-//       ],
-//     }, // Object used to contain Global site object configuration
-//     pageTypes: [], // Array used to contain the page type object configurations
-//   };
-
-//   Evergage.initSitemap(sitemapConfig); // Initializes the Sitemap
-// });
-// The following code sample depicts examples of listeners configured in the global config and product_detail page type.
-
 Evergage.init({
   account: "axxonconsultingsa",
   dataset: "testmv",
@@ -57,8 +6,26 @@ Evergage.init({
 }).then(() => {
   const config = {
     global: {
+      onActionEvent: (event) => {
+        var userData = interactionStudioExperienceCloudHelpers.userData;
+        if (userData) {
+          event.user = event.user || {};
+          event.user.attributes = event.user.attributes || {};
+          event.user.attributes.userName = (
+            (userData?.fields?.FirstName?.value || "") +
+            " " +
+            (userData?.fields?.LastName?.value || "")
+          ).trim();
+          event.user.attributes.experienceCloudUserId = userData?.id;
+          event.user.attributes.emailAddress = userData?.fields?.Email?.value;
+          event.user.attributes.companyName =
+            userData?.fields?.CompanyName?.value;
+        }
+
+        return event;
+      },
       listeners: [
-        Evergage.listener("submit", ".button", () => {
+        Evergage.listener("click", ".button", () => {
           const customer = Evergage.cashDom(".input").val();
           console.log(customer);
           if (customer) {
@@ -66,7 +33,7 @@ Evergage.init({
               action: "First test",
               user: {
                 attibutes: {
-                  emailAddress: "Email test",
+                  emailAddress: "EmailTest",
                 },
                 id: "testid",
                 customerId: customer,
@@ -86,6 +53,7 @@ Evergage.init({
         isMatch: () => {
           return window.location.pathname === "/";
         },
+        contentZones: [{ name: "home", selector: ".content" }],
       },
     ],
     // pageTypes: [
@@ -230,6 +198,28 @@ Evergage.init({
     //   },
     // ],
   };
+  let currentUrl = window.location.href;
+  let isSitemapInitialized = false;
+
+  document.addEventListener("lwc_onuserdataready", (e) => {
+    if (isSitemapInitialized) return;
+
+    isSitemapInitialized = true;
+
+    interactionStudioExperienceCloudHelpers.catchBuilderContext();
+
+    interactionStudioExperienceCloudHelpers.userData =
+      e && e.detail && e.detail.userData;
+
+    Evergage.initSitemap(config);
+
+    setInterval(() => {
+      if (currentUrl !== window.location.href) {
+        currentUrl = window.location.href;
+        Evergage.reinit();
+      }
+    }, 1000);
+  });
 
   // This is a helper function created to help complete these labs.
   // const getProductsFromDataLayer = () => {

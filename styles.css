@@ -1,20 +1,20 @@
-#content {
+.content {
     display: flex;
     flex-direction: column;
 }
 
-#button {
+.button {
     width: 250px;
 }
 
-#hover {
+.hover {
     margin-top: 20px;
 }
 
-#hover img {
+.hover img {
     width: 250px;
 }
 
 html {
-    background-color:cadetblue;
+    background-color:wheat;
 }
