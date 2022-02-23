@@ -34,9 +34,9 @@ Evergage.init({
               user: {
                 attibutes: {
                   emailAddress: "EmailTest",
+                  customerId: customer,
+                  id: "testid",
                 },
-                id: "testid",
-                customerId: customer,
               },
             });
           }
