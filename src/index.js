@@ -14,11 +14,11 @@ Evergage.init({
             Evergage.sendEvent({
               action: "First test",
               user: {
-                attibutes: {
+                attributes: {
                   emailAddress: "EmailTest",
                   customerId: customer,
-                  id: "testid",
                 },
+                id: "testid",
               },
             });
           }
@@ -180,6 +180,15 @@ Evergage.init({
     //   },
     // ],
   };
+
+  /**
+   * The following listener waits until user data is sent from
+   * the Data Capture LWC and then initializes Interaction
+   * Studio sitemap. It also reinitilizes the sitemap in case the
+   * URL of the webpage changes, because Experience Cloud works as
+   * a Single Page Application
+   */
+
   let currentUrl = window.location.href;
   let isSitemapInitialized = false;
 
