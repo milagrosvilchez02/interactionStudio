@@ -14,8 +14,6 @@ Evergage.init({
           event.user.attributes = event.user.attributes || {};
           event.user.attributes.experienceCloudUserId = userData?.id;
           event.user.attributes.emailAddress = userData?.fields?.Email?.value;
-          event.user.attributes.companyName =
-            userData?.fields?.CompanyName?.value;
         }
         return event;
       },
@@ -29,7 +27,7 @@ Evergage.init({
               user: {
                 emailAddress: "EmailTest",
                 customerId: customer,
-                id: "testid2",
+                id: customer,
               },
             });
           }
