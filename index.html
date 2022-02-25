@@ -24,16 +24,16 @@ For full license text, see the LICENSE file in the repo root or https://opensour
         * If YES, it sends an Event to all Interaction Studio LWCs to show
         * placeholder content.
         */
-        catchBuilderContext: function(){
-            const hostname = window?.location?.hostname?.toLowerCase();
+        // catchBuilderContext: function(){
+        //     const hostname = window?.location?.hostname?.toLowerCase();
             
-            if(
-                hostname?.indexOf('trusting') > 0 
-                || window.localStorage.getItem('evgVE') === 'true'
-            ){
-                document.dispatchEvent(new CustomEvent('interactionstudio_onbuildercontextdetected'));
-            }
-        }
+        //     if(
+        //         hostname?.indexOf('trusting') > 0 
+        //         || window.localStorage.getItem('evgVE') === 'true'
+        //     ){
+        //         document.dispatchEvent(new CustomEvent('interactionstudio_onbuildercontextdetected'));
+        //     }
+        // }
     };
 
 
@@ -45,20 +45,20 @@ For full license text, see the LICENSE file in the repo root or https://opensour
     * Templates to identify that the Personalization LWC is ready to receive
     * personalized content.
     */
-    document.addEventListener('lwc_oncomponentready', (e) => {
-        interactionStudioExperienceCloudHelpers.catchBuilderContext();
+    // document.addEventListener('lwc_oncomponentready', (e) => {
+    //     interactionStudioExperienceCloudHelpers.catchBuilderContext();
 
-        const contentZoneId = e.detail && e.detail.contentZone;
-        console.log(e)
+    //     const contentZoneId = e.detail && e.detail.contentZone;
+    //     console.log(e)
 
-        if (!contentZoneId || document.getElementById('#' + contentZoneId)) return;
+    //     if (!contentZoneId || document.getElementById('#' + contentZoneId)) return;
 
-        const placeholder = document.createElement('div');
-        placeholder.id = contentZoneId;
-        placeholder.style.display = 'none';
+    //     const placeholder = document.createElement('div');
+    //     placeholder.id = contentZoneId;
+    //     placeholder.style.display = 'none';
         
-        document.body.append(placeholder);
-    });
+    //     document.body.append(placeholder);
+    // });
 
 
     /**
