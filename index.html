@@ -49,6 +49,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
         interactionStudioExperienceCloudHelpers.catchBuilderContext();
 
         const contentZoneId = e.detail && e.detail.contentZone;
+        console.log(e)
 
         if (!contentZoneId || document.getElementById('#' + contentZoneId)) return;
 
