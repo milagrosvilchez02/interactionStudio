@@ -28,8 +28,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
             const hostname = window?.location?.hostname?.toLowerCase();
             
             if(
-                hostname?.indexOf('sitepreview') > 0 
-                || hostname?.indexOf('livepreview') > 0
+                hostname?.indexOf('trusting') > 0 
                 || window.localStorage.getItem('evgVE') === 'true'
             ){
                 document.dispatchEvent(new CustomEvent('interactionstudio_onbuildercontextdetected'));
@@ -65,18 +64,18 @@ For full license text, see the LICENSE file in the repo root or https://opensour
     * The following listener is bypassing stat events(campaign impression/campaign click)
     * from Personalization LWCs to Interaction Studio
     */
-    document.addEventListener('lwc_onstatsend', (e) => {
-        Evergage.sendStat(e.detail);
-    });
+    // document.addEventListener('lwc_onstatsend', (e) => {
+    //     Evergage.sendStat(e.detail);
+    // });
 
 
     /**
     * The following listener is bypassing Custom Interaction Studio events
     * from Personalization LWCs to Interaction Studio
     */
-    document.addEventListener('lwc_oneventsend', (e) => {
-        Evergage.sendEvent(e.detail);
-    });
+    // document.addEventListener('lwc_oneventsend', (e) => {
+    //     Evergage.sendEvent(e.detail);
+    // });
 </script>
     <title>index.html</title>
 </head>

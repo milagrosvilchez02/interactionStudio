@@ -9,7 +9,6 @@ Evergage.init({
       onActionEvent: (event) => {
         var userData = interactionStudioExperienceCloudHelpers.userData;
         if (userData) {
-          console.log(event);
           event.user = event.user || {};
           event.user.attributes = event.user.attributes || {};
           event.user.attributes.experienceCloudUserId = userData?.id;
@@ -20,15 +19,14 @@ Evergage.init({
       listeners: [
         Evergage.listener("click", ".button", () => {
           const customer = Evergage.cashDom(".input").val();
-          console.log(customer);
           if (customer) {
             Evergage.sendEvent({
               action: "First test",
               user: {
-                emailAddress: "EmailTest",
                 customerId: customer,
                 id: customer,
               },
+              emailAddress: "EmailTest",
             });
           }
         }),
