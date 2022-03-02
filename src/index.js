@@ -25,7 +25,7 @@ Evergage.init({
               user: {
                 customerId: customer,
                 id: customer,
-                emailAddress: "EmailTest@test.com",
+                emailAddress: "EmailTest@test.com"
               },
             });
           }
