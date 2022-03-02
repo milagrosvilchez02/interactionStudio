@@ -26,9 +26,10 @@ Evergage.init({
                 customerId: customer,
                 id: customer,
                 attributes: {
-                  emailAddress: 'billybob@example.com'
-                }
+                  emailAddress: "billybob@example.com",
+                },
               },
+            });
           }
         }),
       ],
