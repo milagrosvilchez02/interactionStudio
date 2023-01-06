@@ -1,4 +1,4 @@
-Evergage.init({
+SalesforceInteractions.init({
   account: "axxonconsultingsa",
   dataset: "mvtest",
   cookiedomain: "https://interactionmv.netlify.app/",
@@ -215,5 +215,5 @@ Evergage.init({
   //   }
   // };
 
-  Evergage.initSitemap(config);
+  SalesforceInteractions.initSitemap(config);
 });
