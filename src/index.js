@@ -21,11 +21,13 @@ SalesforceInteractions.init({
           const customer = SalesforceInteractions.cashDom(".input").val();
           if (customer) {
             SalesforceInteractions.sendEvent({
-              interaction: {
-                name: "Click on button"
-              },
+              action: "Submit id",
               user: {
-                identities: { emailAddress: 'test@test.com' }
+                customerId: customer,
+                id: customer,
+                attributes: {
+                  emailAddress: "test@test.com",
+                },
               },
             });
           }
