@@ -21,13 +21,11 @@ SalesforceInteractions.init({
           const customer = Evergage.cashDom(".input").val();
           if (customer) {
             SalesforceInteractions.sendEvent({
-              action: "First test",
+              interaction: {
+                name: "Click on button"
+              },
               user: {
-                customerId: customer,
-                id: customer,
-                attributes: {
-                  emailAddress: "billybob@example.com",
-                },
+                identities: { emailAddress: 'test@test.com' }
               },
             });
           }
