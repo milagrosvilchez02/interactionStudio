@@ -1,7 +1,7 @@
 Evergage.init({
   account: "axxonconsultingsa",
   dataset: "testmv",
-  cookiedomain: "https://trusting-euler-f5ef8a.netlify.app/",
+  cookiedomain: "https://interactionmv.netlify.app/",
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
   const config = {
