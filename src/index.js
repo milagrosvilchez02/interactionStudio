@@ -17,7 +17,7 @@ SalesforceInteractions.init({
         return event;
       },
       listeners: [
-        Evergage.listener("click", ".button", () => {
+        SalesforceInteractions.listener("click", ".button", () => {
           const customer = Evergage.cashDom(".input").val();
           if (customer) {
             Evergage.sendEvent({
@@ -32,6 +32,21 @@ SalesforceInteractions.init({
             });
           }
         }),
+        SalesforceInteractions.listener("click", ".image", () => {
+          const customer = Evergage.cashDom(".input").val();
+          if (customer) {
+            Evergage.sendEvent({
+              action: "Click on image",
+              user: {
+                customerId: customer,
+                id: customer,
+                attributes: {
+                  emailAddress: "billybob@example.com",
+                },
+              },
+            });
+          }
+        })
       ],
     },
     pageTypeDefault: {
