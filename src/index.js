@@ -18,7 +18,7 @@ SalesforceInteractions.init({
       },
       listeners: [
         SalesforceInteractions.listener("click", ".button", () => {
-          const customer = Evergage.cashDom(".input").val();
+          const customer = SalesforceInteractions.cashDom(".input").val();
           if (customer) {
             SalesforceInteractions.sendEvent({
               interaction: {
@@ -31,7 +31,7 @@ SalesforceInteractions.init({
           }
         }),
         SalesforceInteractions.listener("click", ".image", () => {
-          const customer = Evergage.cashDom(".input").val();
+          const customer = SalesforceInteractions.cashDom(".input").val();
           if (customer) {
             SalesforceInteractions.sendEvent({
               action: "Click on image",
