@@ -1,4 +1,6 @@
 SalesforceInteractions.init({
+  account: "axxonconsultingsa",
+  dataset: "mvtest",
   cookiedomain: "https://interactionmv.netlify.app/",
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
