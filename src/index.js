@@ -1,6 +1,6 @@
 Evergage.init({
   account: "axxonconsultingsa",
-  dataset: "testmv",
+  dataset: "mvtest",
   cookiedomain: "https://interactionmv.netlify.app/",
   trackerUrl: "https://axxonconsultingsa.us-5.evergage.com",
 }).then(() => {
