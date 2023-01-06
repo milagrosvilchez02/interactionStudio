@@ -20,7 +20,7 @@ SalesforceInteractions.init({
         SalesforceInteractions.listener("click", ".button", () => {
           const customer = Evergage.cashDom(".input").val();
           if (customer) {
-            Evergage.sendEvent({
+            SalesforceInteractions.sendEvent({
               action: "First test",
               user: {
                 customerId: customer,
@@ -35,7 +35,7 @@ SalesforceInteractions.init({
         SalesforceInteractions.listener("click", ".image", () => {
           const customer = Evergage.cashDom(".input").val();
           if (customer) {
-            Evergage.sendEvent({
+            SalesforceInteractions.sendEvent({
               action: "Click on image",
               user: {
                 customerId: customer,
