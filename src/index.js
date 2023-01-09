@@ -59,7 +59,12 @@ SalesforceInteractions.init({
         isMatch: () => {
           return window.location.pathname === "/";
         },
-        contentZones: [{ name: "home", selector: ".content" }],
+        contentZones: [
+          { 
+            name: "home_hero", 
+            selector: ".header" 
+          }
+        ],
       },
     ],
     // pageTypes: [
