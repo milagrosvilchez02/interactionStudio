@@ -60,8 +60,12 @@ SalesforceInteractions.init({
         contentZones: [
           { 
             name: "home_hero", 
-            selector: "#idHeader" 
-          }
+            selector: ".headerId" 
+          },
+          {
+            name: "home_recs",
+            selector: ".contentId",
+          },
         ],
       },
     ],
