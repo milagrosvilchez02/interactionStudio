@@ -56,9 +56,7 @@ SalesforceInteractions.init({
       {
         name: "home",
         action: "Homepage",
-        isMatch: () => {
-          return window.location.pathname === "/";
-        },
+        isMatch: true,
         contentZones: [
           { 
             name: "home_hero", 
