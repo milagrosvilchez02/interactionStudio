@@ -6,6 +6,12 @@ SalesforceInteractions.init({
 }).then(() => {
   const config = {
     global: {
+      contentZones: [
+        { 
+          name: "home_hero", 
+          selector: "#headerId" 
+        }
+      ],
       onActionEvent: (event) => {
         var userData = interactionStudioExperienceCloudHelpers.userData;
         if (userData) {
@@ -56,16 +62,14 @@ SalesforceInteractions.init({
       {
         name: "home",
         action: "Homepage",
-        isMatch: true,
+        isMatch: () => {
+          return window.location.pathname === "/";
+        },
         contentZones: [
           { 
             name: "home_hero", 
-            selector: ".headerId" 
-          },
-          {
-            name: "home_recs",
-            selector: ".contentId",
-          },
+            selector: "#headerId" 
+          }
         ],
       },
     ],
