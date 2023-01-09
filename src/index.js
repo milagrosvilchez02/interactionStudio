@@ -8,8 +8,8 @@ SalesforceInteractions.init({
     global: {
       contentZones: [
         { 
-          name: "home_hero", 
-          selector: "#headerId" 
+          name: "global_infobar_top_of_page", 
+          selector: "body > div.content > div.image" 
         }
       ],
       onActionEvent: (event) => {
@@ -67,8 +67,8 @@ SalesforceInteractions.init({
         },
         contentZones: [
           { 
-            name: "home_hero", 
-            selector: "#headerId" 
+            name: "global_infobar_top_of_page", 
+            selector: "body > div.content > div.image" 
           }
         ],
       },
