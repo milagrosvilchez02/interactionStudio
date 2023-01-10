@@ -6,12 +6,6 @@ SalesforceInteractions.init({
 }).then(() => {
   const config = {
     global: {
-      contentZones: [
-        { 
-          name: "global_infobar_top_of_page", 
-          selector: "body > div.content > div.image" 
-        }
-      ],
       onActionEvent: (event) => {
         var userData = interactionStudioExperienceCloudHelpers.userData;
         if (userData) {
@@ -20,8 +14,17 @@ SalesforceInteractions.init({
           event.user.attributes.experienceCloudUserId = userData?.id;
           event.user.attributes.emailAddress = userData?.fields?.Email?.value;
         }
+        
         return event;
       },
+
+      contentZones: [
+        { 
+          name: "global_infobar_top_of_page", 
+          selector: "body > div.content > div.image" 
+        }
+      ],
+
       listeners: [
         SalesforceInteractions.listener("click", ".button", () => {
           const customer = SalesforceInteractions.cashDom(".input").val();
@@ -38,6 +41,7 @@ SalesforceInteractions.init({
             });
           }
         }),
+
         SalesforceInteractions.listener("click", ".image", () => {
           const customer = SalesforceInteractions.cashDom(".input").val();
           if (customer) {
@@ -57,6 +61,9 @@ SalesforceInteractions.init({
     },
     pageTypeDefault: {
       name: "default",
+      interaction: {
+        name: "Default Page"
+      }
     },
     pageTypes: [
       {
