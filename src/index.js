@@ -14,7 +14,7 @@ SalesforceInteractions.init({
           event.user.attributes.experienceCloudUserId = userData?.id;
           event.user.attributes.emailAddress = userData?.fields?.Email?.value;
         }
-        
+
         return event;
       },
 
@@ -22,6 +22,10 @@ SalesforceInteractions.init({
         { 
           name: "global_infobar_top_of_page", 
           selector: "body > div.content > div.image" 
+        },
+        { 
+          name: "category_recs", 
+          selector: ".buttons-content" 
         }
       ],
 
