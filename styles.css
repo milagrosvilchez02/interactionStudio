@@ -5,9 +5,9 @@ body {
 }
 
 .header {
-    width: 70%;
     font-size: 100%;
     color: rgb(73, 28, 43);
+    text-align: center;
 }
 
 .content {
