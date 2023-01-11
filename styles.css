@@ -4,6 +4,12 @@ body {
     align-items: center;
 }
 
+.header {
+    width: 70%;
+    font-size: 100%;
+    color: rgb(73, 28, 43);
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -22,5 +28,5 @@ body {
 }
 
 html {
-    background-color: grey;
+    background-color: pink;
 }
